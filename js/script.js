@@ -27,4 +27,34 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Por favor, preencha todos os campos.');
         }
     });
+
+    // Funcionalidade do menu hambúrguer
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.querySelector('#sidebar');
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    document.body.appendChild(overlay);
+
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+
+    // Fechar menu ao clicar em uma opção
+    const menuLinks = document.querySelectorAll('.menu-link');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    });
+
+    // Fechar menu ao clicar fora
+    overlay.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
 });
